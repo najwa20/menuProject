@@ -1,0 +1,318 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins",sans-serif;
+
+}
+body{
+  min-height: 100vh;
+  background: #d2d2dd;
+}
+.sidebar{
+  position: fixed;
+  top:0;
+  left: 0;
+  height: 100%;
+  width: 260px;
+  background:#161a2d ;
+  padding: 25px 20px;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  overflow-y: thin;
+  overflow: visible;
+  transition: all 0.7s ease;
+
+}
+.sidebar ul li a:hover{
+  color: #53a6ff;
+  background: #161a2d;
+
+}
+
+.sidebar-links ul {
+  list-style-type: none;
+  padding-left: 20px; /* Adjust padding for indent */
+  position: relative;
+  margin: 0;
+}
+.sidebar-links .active {
+ color: #53a6ff;;
+}
+
+
+
+.sidebar-links ul::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 5px;
+  width: 1px;
+  background: #6b685ce3; /* Line color */
+}
+
+.sidebar-links ul li {
+  position: relative;
+}
+
+
+
+
+/* Active state */
+.sidebar-links ul li.active::before,
+.sidebar-links ul li.active::after {
+  background: #161a2d;
+}
+
+
+
+
+/* Hide vertical line for collapsed items */
+.sidebar.collapsed .sidebar-links ul li:last-child::after {
+  display: none;
+}
+
+/* Hide the connecting line for collapsed items */
+.sidebar.collapsed .sidebar-links ul::before {
+  display: none;
+}
+
+.sidebar-header img.menu-icon{
+  width: 50px;
+  height: 50px; 
+  border-radius: 50%; 
+  object-fit: cover; 
+  }
+.sidebar-header img.geoprod{
+  width: 500px;
+  height: 50px; 
+}
+.sidebar-header{
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center horizontally */
+  padding-bottom: 20px; /* Add padding to center vertically */
+}
+.sidebar-header h2 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #fff;
+  font-family: auto;
+}
+.sidebar-links{
+  list-style-type: none;
+margin-top: 20px;
+height: 80%;
+overflow-y: auto;
+scrollbar-width: thin;
+font-family: 'Nunito Sans', sans-serif;
+
+}
+.sidebar-links li a {
+  color: #fff; /* White color for parent items */
+}
+
+
+
+
+/* Hover effects */
+.sidebar-links li.parent-item a:hover,
+.sidebar-links li.child-item a:hover {
+  color: #53a6ff; /* Hover color for both parent and child items */
+  background: #161a2d;
+}
+
+
+/* For WebKit browsers */
+.sidebar-links::-webkit-scrollbar {
+  width: 8px; /* Width of the scrollbar */
+  display: none;
+}
+
+.sidebar-links:hover::-webkit-scrollbar,
+.sidebar.collapsed .sidebar-links::-webkit-scrollbar {
+  display: block; /* Show scrollbar on hover or when sidebar is collapsed */
+}
+.sidebar-links::-webkit-scrollbar-track {
+  background-color: #f0f0f0; /* Color of the scrollbar track */
+}
+
+.sidebar-links::-webkit-scrollbar-thumb {
+  background-color: #808080; /* Color of the scrollbar thumb (gray) */
+  border-radius: 10px; /* Roundness of the scrollbar thumb */
+}
+
+/* Optional: Change the appearance when hovering over the scrollbar */
+.sidebar-links::-webkit-scrollbar-thumb:hover {
+  background-color: #606060; /* Hover state color (darker gray) */
+}
+
+
+.sidebar-links {
+  scrollbar-color:  #161a2d #161a2d; /* Color of thumb and track */
+}
+.sidebar-links h4{
+  color: #fff;
+  font-weight: 500;
+  margin: 10px 0;
+  white-space: nowrap;
+  font-family: 'Nunito Sans', sans-serif;
+}
+
+.sidebar-links li a {
+  display: flex;
+  align-items: center;
+  gap: 0 20px;
+  color: #fff;
+  font-weight: 400;
+  padding: 10px 0px;
+  white-space: nowrap;
+  text-decoration: none;
+  font-size: 11px;
+}
+
+
+.user-account {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+   width: 10px;
+   height: 30px;
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  width: 50%; /* Ensure the profile takes full width of the parent */
+}
+
+.user-profile img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.user-detail {
+  margin-left: 10px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; /* This centers the content horizontally */
+  flex-grow: 1; /* This allows the detail section to take up remaining space */
+}
+
+.user-detail h3 {
+  font-size: 14px;
+  font-weight: normal;
+  margin: 0px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.user-detail span {
+  font-size: 14px;
+  text-align: center; /* Ensure text is centered */
+  white-space: nowrap; /* Prevent text from wrapping */
+}
+
+ 
+.sidebar.collapsed {
+  width: 80px; /* Adjust the width as needed for the collapsed state */
+}
+.sidebar.collapsed .sidebar-links li a {
+  justify-content: center; /* Center icons in collapsed state */
+  padding: 15px 0;
+}
+.sidebar.collapsed .sidebar-header h2,
+.sidebar.collapsed .sidebar-links h4 span,
+.sidebar.collapsed .sidebar-links li a .menu-title,
+.sidebar.collapsed .user-account .user-detail {
+  display: none; /* Hide text in collapsed state */
+}
+
+.sidebar.collapsed .sidebar-links li a {
+  justify-content: center; /* Center icons in collapsed state */
+  padding: 15px 0;
+}
+.h3{
+  font-family: 'Nunito Sans', sans-serif;
+  align-items: center;
+}
+/* Add this to your CSS file */
+.toggle-icon {
+  position: absolute;
+  top: 50px; /* Adjust based on your design */
+  right: -1px; /* Adjust based on your design to make it half inside and half outside */
+  transform: translateY(-50%);
+  border-radius: 50%; /* Make it circular */
+  color: #ffffff;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  z-index: 1000; /* Ensure it is above other elements */
+}
+
+.sidebar.collapsed .toggle-icon {
+  right: -15px; /* Adjust to keep the icon half inside and half outside */
+}
+
+.toggle-icon:hover {
+  color: #53a6ff;
+  font-size: 0px;
+}
+
+.toggle-icon i {
+  font-size: 16px; /* Adjust the icon size for better visibility */
+}
+.sidebar.collapsed {
+  width: 80px; /* Adjust the width as needed for the collapsed state */
+}
+.sidebar.collapsed .sidebar-links li a {
+  justify-content: center; /* Center icons in collapsed state */
+  padding: 15px 0;
+}
+.sidebar.collapsed .sidebar-header h2,
+.sidebar.collapsed .sidebar-links h4 span,
+.sidebar.collapsed .sidebar-links li a .menu-title,
+.sidebar.collapsed .user-account .user-detail {
+  display: none; /* Hide text in collapsed state */
+}
+
+.sidebar.collapsed .sidebar-links li a {
+  justify-content: center; /* Center icons in collapsed state */
+  padding: 15px 0;
+}
+
+.menu-separator {
+  width: 100%;
+  height: 1px;
+  background-color: #8a83832d;
+  margin: 5px 0;
+}
+
+.menu-icon {
+  color: #fff; /* Set the color to white */
+  cursor: pointer; /* Ensure cursor changes to pointer on hover */
+
+ 
+
+}
+.divider {
+  height: thin; /* Make the line thinner */
+  border: none; /* Remove the default border */
+  border-top: 1px solid #4d4a4a; /* Set the top border color to gray */
+  margin: 10px 0; /* Adjust spacing as needed */
+}
+.lougout {
+  color: #d12727; /* Change to your desired color */
+   
+}

@@ -1,0 +1,47 @@
+
+<aside class="sidebar" [class.collapsed]="isCollapsed" (mouseenter)="onMouseEnter()" (mouseleave)="onMouseLeave()">
+  <div class="sidebar-header">
+    <img *ngIf="isCollapsed" class="menu-icon" src="assets/images/Capture-removebg-preview.png" (click)="toggleSidebar()" />
+    <img *ngIf="!isCollapsed" class="geoprod" src="assets/images/geoprod-beta-version3.0-blanc.svg" alt="logo" />
+  </div>
+  <div class="toggle-icon" (click)="toggleSidebar()">
+    <i class="fa-solid" [ngClass]="{ 'fa-chevron-left': !isCollapsed}"></i>
+  </div>
+  <ul class="sidebar-links">
+    <ng-template #menuTemplate let-item="menuItem">
+      <li [ngClass]="{ 'active': item.isActive }"(mouseenter)="onHover(item)" (mouseleave)="onHoverOut(item)">
+        <a href="#" (click)="toggleSubMenu(item)">
+          <i [class]="item.iconClass"></i>
+          <span class="menu-title tt-font" *ngIf="true">{{ item.title }}</span>
+          <i *ngIf="!isCollapsed && item.children.length" class="fa-solid" [ngClass]="{'fa-chevron-down': item.expanded, 'fa-chevron-right': !item.expanded}"></i>
+        </a>
+        <ul *ngIf="(isCollapsed && item.isHovered) || (!isCollapsed && item.children.length)" [@expandCollapse]="item.expanded ? 'expanded' : 'collapsed'">
+          <ng-container *ngFor="let child of item.children">
+            <ng-template [ngTemplateOutlet]="menuTemplate" [ngTemplateOutletContext]="{ menuItem: child }"></ng-template>
+          </ng-container>
+        </ul>
+      </li>
+    </ng-template>
+    <ng-container *ngFor="let item of menuItems">
+      <ng-template [ngTemplateOutlet]="menuTemplate" [ngTemplateOutletContext]="{ menuItem: item }"></ng-template>
+    </ng-container>
+  </ul>
+  <hr class="divider">
+  <div class="user-account">
+    <div class="user-profile">
+      <img src="assets/images/profile-img.jpg" alt="Profile Image" />
+      <div class="user-detail" *ngIf="!isCollapsed">
+        <h3>Najwa Dahmeni</h3>
+        <span>Role</span>
+        <!--span class="lougout"><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;Logout Account</span-->
+      </div>
+    </div>
+  </div>
+</aside>
+
+
+
+
+
+
+
